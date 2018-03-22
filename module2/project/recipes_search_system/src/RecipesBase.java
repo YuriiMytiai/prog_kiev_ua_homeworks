@@ -18,30 +18,46 @@ public class RecipesBase implements Serializable {
     /*
     method findByProducts(ArrayList<Product> products) will return new RecipesBase object with matches in products
      */
-    public RecipesBase findByProducts(ArrayList<Product> products) {
-        return null;
+    public RecipesBase findByProducts(ArrayList<Enum> products) {
+        RecipesBase base = new RecipesBase(category);
+        for (Recipe curRecipe:recipes) {
+            if (curRecipe.getPercentageOfEntries(products) == 100) base.addPecipe(curRecipe);
+        }
+        return base;
     }
 
     /*
     method findByProducts(ArrayList<Product> products, byte entryPercents) will return new RecipesBase object
      with matches in products with some tolerance
      */
-    public RecipesBase findByProducts(ArrayList<Product> products, byte entryPercents) {
-        return null;
+    public RecipesBase findByProducts(ArrayList<Enum> products, byte entryPercents) {
+        RecipesBase base = new RecipesBase(category);
+        for (Recipe curRecipe:recipes) {
+            if (curRecipe.getPercentageOfEntries(products) > entryPercents) base.addPecipe(curRecipe);
+        }
+        return base;
     }
 
     /*
     method findByTime(int time) will return RecipesBase with time <= than given
     */
     public RecipesBase findByTime(int time) {
-        return null;
+        RecipesBase base = new RecipesBase(category);
+        for (Recipe curRecipe:recipes) {
+            if (curRecipe.getTime() < time) base.addPecipe(curRecipe);
+        }
+        return base;
     }
 
     /*
     method findByComplexity(byte complexity) will return RecipesBase with complexity <= than given
     */
     public RecipesBase findByComplexity(byte complexity) {
-        return null;
+        RecipesBase base = new RecipesBase(category);
+        for (Recipe curRecipe:recipes) {
+            if (curRecipe.getComplexity() < complexity) base.addPecipe(curRecipe);
+        }
+        return base;
     }
 
 
@@ -66,8 +82,5 @@ public class RecipesBase implements Serializable {
     public void sortByNumOfProducts() {
         Collections.sort(recipes, Recipe.CompareByNumOfProducts);
     }
-
-
-
 
 }

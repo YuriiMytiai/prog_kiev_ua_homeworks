@@ -39,15 +39,19 @@ public class Recipe implements Serializable {
 
     public String getAlgorithm() { return algorithm; }
 
-    public int getPercentageOfEntries(ArrayList<Enum> products) {
+    /*
+    method getPercentageOfEntries(ArrayList<Enum> products) search through all products in recipe and
+    all products in user's product list and finds equal products
+     */
+    public byte getPercentageOfEntries(ArrayList<Enum> products) {
         int numOfEquals = 0;
-        for (Enum curProduct:products) {
-            for(Product productInRecipe:this.products) {
+        for (Product productInRecipe:this.products) {
+            for(Enum curProduct:products) {
                 if (productInRecipe.getName().equals(curProduct)) numOfEquals++;
             }
         }
 
-        return numOfEquals * 100 / this.products.size();
+        return (byte)(numOfEquals * 100 / this.products.size());
     }
 
     public static final Comparator<Recipe> CompareByTime = new Comparator<Recipe>() {
