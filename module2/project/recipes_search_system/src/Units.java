@@ -11,7 +11,7 @@ public enum Units {
             return "kg";
         }
     },
-    Gramms {
+    Grams {
         @Override
         public String toString() {
             return "g";
@@ -23,5 +23,11 @@ public enum Units {
             return "l";
         }
     },
+    Milliliters {
+        @Override
+        public String toString() {
+            return "ml";
+        }
+    }
 
 }

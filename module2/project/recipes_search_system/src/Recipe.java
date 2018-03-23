@@ -33,6 +33,17 @@ public class Recipe implements Serializable {
 
     public ArrayList<Product> getProducts() { return products; }
 
+    public ArrayList<Product> getProducts(int persons) {
+        if (persons < 1) throw new IllegalArgumentException("Number of persons should be grater then 0");
+
+        ArrayList<Product> products = new ArrayList<>();
+        for (Product curProduct:this.products) {
+            curProduct.getQuantity(persons);
+            products.add(curProduct);
+        }
+        return products;
+    }
+
     public int getTime() { return time; }
 
     public byte getComplexity() { return complexity; }
@@ -76,4 +87,23 @@ public class Recipe implements Serializable {
             return r2.getProducts().size() - r1.getProducts().size();
         }
     };
+
+    public String showRecipe() {
+        StringBuilder text = new StringBuilder();
+        String header = String.format("Recipe of %s \nYou need:\n", name);
+        text.append(header);
+        int i = 1;
+        for (Product curProduct:products) {
+            text.append(String.format("%d. %s", i++, curProduct.toString()));
+        }
+        text.append(String.format("Instructions how to cook:\n%s\n\n", algorithm));
+        text.append(String.format("Required time: %d min\nComplexity of recipe: %d of 10\n\n", time, complexity));
+
+        return text.toString();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s, required time: %d min, complexity: %d of 10", name, time, complexity);
+    }
 }

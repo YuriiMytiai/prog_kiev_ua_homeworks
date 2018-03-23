@@ -18,6 +18,7 @@ public class Product implements Serializable {
         this.significance = significance;
     }
 
+
     private void checkArgs(double quantity, byte significance) {
         if ((quantity < 0)) // if quantity = 0 we don't need this product in recipe, if qty < 0 it doesn't have sens
             throw new IllegalArgumentException("Quantity has illegal value");
@@ -42,5 +43,9 @@ public class Product implements Serializable {
         return quantity * persons;
     }
 
-
+    @Override
+    public String toString() {
+        String text = String.format("%s - %.3f %s\n", name, quantity, unit);
+        return text;
+    }
 }

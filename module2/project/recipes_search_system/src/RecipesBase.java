@@ -11,7 +11,7 @@ public class RecipesBase implements Serializable {
         this.category = category;
     }
 
-    public void addPecipe(Recipe recipe) { recipes.add(recipe); }
+    public void addRecipe(Recipe recipe) { recipes.add(recipe); }
 
     public ArrayList<Recipe> getRecipes() { return recipes; }
 
@@ -21,7 +21,7 @@ public class RecipesBase implements Serializable {
     public RecipesBase findByProducts(ArrayList<Enum> products) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
-            if (curRecipe.getPercentageOfEntries(products) == 100) base.addPecipe(curRecipe);
+            if (curRecipe.getPercentageOfEntries(products) == 100) base.addRecipe(curRecipe);
         }
         return base;
     }
@@ -33,7 +33,7 @@ public class RecipesBase implements Serializable {
     public RecipesBase findByProducts(ArrayList<Enum> products, byte entryPercents) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
-            if (curRecipe.getPercentageOfEntries(products) > entryPercents) base.addPecipe(curRecipe);
+            if (curRecipe.getPercentageOfEntries(products) > entryPercents) base.addRecipe(curRecipe);
         }
         return base;
     }
@@ -44,7 +44,7 @@ public class RecipesBase implements Serializable {
     public RecipesBase findByTime(int time) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
-            if (curRecipe.getTime() < time) base.addPecipe(curRecipe);
+            if (curRecipe.getTime() <= time) base.addRecipe(curRecipe);
         }
         return base;
     }
@@ -55,7 +55,7 @@ public class RecipesBase implements Serializable {
     public RecipesBase findByComplexity(byte complexity) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
-            if (curRecipe.getComplexity() < complexity) base.addPecipe(curRecipe);
+            if (curRecipe.getComplexity() <= complexity) base.addRecipe(curRecipe);
         }
         return base;
     }
@@ -83,4 +83,16 @@ public class RecipesBase implements Serializable {
         Collections.sort(recipes, Recipe.CompareByNumOfProducts);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder text = new StringBuilder("");
+        String header = String.format("Available recipes from %s category:\n", category);
+        text.append(header);
+        int i = 1;
+        for (Recipe curRecipe:recipes) {
+            text.append(String.format("%d. %s\n", i++, curRecipe.toString()));
+        }
+
+        return text.toString();
+    }
 }
