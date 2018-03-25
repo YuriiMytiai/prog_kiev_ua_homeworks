@@ -46,12 +46,32 @@ public class Directory extends NamedFSItem {
         text.append("\n");
 
         for (FSItem curItem:items) {
-            text.append("\t");
-            text.append(curItem.toString());
-            text.append("\n");
+            String itemStr = curItem.toString();
+            String itemStrWithTabs = removeEnd(withLeadingTabs(itemStr));
+            text.append(itemStrWithTabs);
         }
 
-        return text.toString();
+        String fs = removeEnd(text.toString());
+        return fs;
+    }
+
+    private String removeEnd(String s) {
+        for (int i = s.length() - 1; i > 0; i--) {
+            char c= s.charAt(i);
+            if ((s.charAt(i) != 9) && (s.charAt(i) != 10)) return s.substring(0, (i + 1)) + "\n";
+        }
+        return s;
+    }
+
+    private String withLeadingTabs(String itemStr) {
+        String[] parts = itemStr.split("\n");
+        StringBuilder newItemStr = new StringBuilder("\t");
+        for (String part:parts) {
+            newItemStr.append(part);
+            newItemStr.append("\n\t");
+        }
+
+        return newItemStr.toString();
     }
 
     @Override
