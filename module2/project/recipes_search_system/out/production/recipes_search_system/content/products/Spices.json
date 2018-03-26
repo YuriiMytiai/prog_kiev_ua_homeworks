@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "ProductCategory": "Spices",
+      "ProductName": "Salt"
+    },
+    {
+      "ProductCategory": "Spices",
+      "ProductName": "Black pepper"
+    },
+    {
+      "ProductCategory": "Spices",
+      "ProductName": "Red pepper"
+    },
+    {
+      "ProductCategory": "Spices",
+      "ProductName": "Oregano"
+    },
+    {
+      "ProductCategory": "Spices",
+      "ProductName": "Sugar"
+    }
+  ]
+}

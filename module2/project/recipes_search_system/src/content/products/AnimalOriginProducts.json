@@ -1,0 +1,16 @@
+{
+"products":[
+{
+"ProductCategory":"AnimalOrigin",
+"ProductName":"Egg"
+},
+{
+"ProductCategory":"AnimalOrigin",
+"ProductName":"Butter"
+},
+{
+"ProductCategory":"AnimalOrigin",
+"ProductName":"Milk"
+}
+]
+}

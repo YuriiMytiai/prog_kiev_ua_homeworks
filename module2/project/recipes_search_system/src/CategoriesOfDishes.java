@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public enum CategoriesOfDishes {
     // according to Wikipedia: https://en.wikipedia.org/wiki/Category:Lists_of_foods_by_type
     // there should be much more fields in production release
@@ -8,5 +10,7 @@ public enum CategoriesOfDishes {
     Casserole,
     Salad,
     Sauce,
-    Soup
+    Soup,
+    Drinks,
+    Other;
 }

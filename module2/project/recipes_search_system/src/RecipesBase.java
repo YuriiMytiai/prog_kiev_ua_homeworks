@@ -11,14 +11,17 @@ public class RecipesBase implements Serializable {
         this.category = category;
     }
 
-    public void addRecipe(Recipe recipe) { recipes.add(recipe); }
+    public RecipesBase addRecipe(Recipe recipe) {
+        recipes.add(recipe);
+        return this;
+    }
 
     public ArrayList<Recipe> getRecipes() { return recipes; }
 
     /*
     method findByProducts(ArrayList<Product> products) will return new RecipesBase object with matches in products
      */
-    public RecipesBase findByProducts(ArrayList<Enum> products) {
+    public RecipesBase findByProducts(ArrayList<String> products) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
             if (curRecipe.getPercentageOfEntries(products) == 100) base.addRecipe(curRecipe);
@@ -30,7 +33,7 @@ public class RecipesBase implements Serializable {
     method findByProducts(ArrayList<Product> products, byte entryPercents) will return new RecipesBase object
      with matches in products with some tolerance
      */
-    public RecipesBase findByProducts(ArrayList<Enum> products, byte entryPercents) {
+    public RecipesBase findByProducts(ArrayList<String> products, byte entryPercents) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
             if (curRecipe.getPercentageOfEntries(products) > entryPercents) base.addRecipe(curRecipe);

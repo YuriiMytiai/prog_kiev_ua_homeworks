@@ -5,7 +5,7 @@ public enum Units {
             return "p";
         }
     },
-    Kilos {
+    Kilograms {
         @Override
         public String toString() {
             return "kg";

@@ -1,0 +1,19 @@
+{"products":[
+  {
+    "ProductCategory":"Liquid",
+    "ProductName":"Water"
+  },
+  {
+    "ProductCategory":"Liquid",
+    "ProductName":"Milk"
+  },
+  {
+    "ProductCategory":"Liquid",
+    "ProductName":"Sunflower oil"
+  },
+  {
+    "ProductCategory":"Liquid",
+    "ProductName":"Olive oil"
+  }
+]
+}

@@ -1,0 +1,30 @@
+{
+  "category":"Drinks",
+  "name":"Tea",
+  "time":10,
+  "complexity":1,
+  "products":[
+    {
+      "name":"Tea",
+      "quantity":1,
+      "units":"Grams",
+      "significance":100,
+      "substitutes":[]
+    },
+    {
+      "name":"Sugar",
+      "quantity":1,
+      "units":"Grams",
+      "significance":70,
+      "substitutes":[]
+    },
+    {
+      "name":"Water",
+      "quantity":250,
+      "units":"Milliliters",
+      "significance":100,
+      "substitutes":[]
+    }
+  ],
+  "algorithm":"Here is text with explanation how to cook tea."
+}

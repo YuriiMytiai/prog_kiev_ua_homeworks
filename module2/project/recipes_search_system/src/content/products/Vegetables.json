@@ -1,0 +1,28 @@
+{
+  "products":[
+  {
+    "ProductCategory":"Vegetables",
+    "ProductName":"Potato"
+  },
+  {
+    "ProductCategory":"Vegetables",
+    "ProductName":"Carrot"
+  },
+  {
+    "ProductCategory":"Vegetables",
+    "ProductName":"Onion"
+  },
+  {
+    "ProductCategory":"Vegetables",
+    "ProductName":"Beetroot"
+  },
+  {
+    "ProductCategory":"Vegetables",
+    "ProductName":"Pepper"
+  },
+  {
+    "ProductCategory":"Vegetables",
+    "ProductName":"Salad Iceberg"
+  }
+]
+}

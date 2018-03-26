@@ -1,0 +1,20 @@
+{
+  "products":[
+{
+"ProductCategory":"Cereals",
+"ProductName":"Rice"
+},
+{
+"ProductCategory":"Cereals",
+"ProductName":"BuckWheat"
+},
+{
+"ProductCategory":"Cereals",
+"ProductName":"Millet"
+},
+{
+"ProductCategory":"Cereals",
+"ProductName":"Wheat flour"
+}
+]
+}

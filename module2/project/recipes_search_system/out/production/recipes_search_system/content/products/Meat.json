@@ -1,0 +1,20 @@
+{
+  "products": [
+  {
+    "ProductCategory":"Meat",
+    "ProductName":"Beef"
+  },
+  {
+    "ProductCategory":"Meat",
+    "ProductName":"Pork"
+  },
+  {
+    "ProductCategory":"Meat",
+    "ProductName":"Chicken"
+  },
+  {
+    "ProductCategory":"Meat",
+    "ProductName":"Mutton"
+  }
+]
+}

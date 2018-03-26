@@ -1,0 +1,20 @@
+{
+  "products":[
+{
+"ProductCategory": "Berries",
+"ProductName": "Strawberry"
+},
+{
+"ProductCategory": "Berries",
+"ProductName": "Raspberry"
+},
+{
+"ProductCategory": "Berries",
+"ProductName": "Blackberry"
+},
+{
+"ProductCategory": "Berries",
+"ProductName": "Cherry"
+}
+]
+}

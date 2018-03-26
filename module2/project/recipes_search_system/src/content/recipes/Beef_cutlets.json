@@ -1,0 +1,64 @@
+{
+  "category":"Barbeque",
+  "name":"Beef cutlet",
+  "time":45,
+  "complexity":6,
+  "products":[
+    {
+      "name":"Beef",
+      "quantity":0.5,
+      "units":"Kilograms",
+      "significance":100,
+      "substitutes":[]
+    },
+    {
+      "name":"Onion",
+      "quantity":100,
+      "units":"Grams",
+      "significance":80,
+      "substitutes":[]
+    },
+    {
+      "name":"Carrot",
+      "quantity":100,
+      "units":"Grams",
+      "significance":20,
+      "substitutes":[]
+    },
+    {
+      "name":"Egg",
+      "quantity":1,
+      "units":"Pieces",
+      "significance":70,
+      "substitutes":[]
+    },
+    {
+      "name":"Salt",
+      "quantity":0.5,
+      "units":"Grams",
+      "significance":80,
+      "substitutes":[]
+    },
+    {
+      "name":"Black pepper",
+      "quantity":0.5,
+      "units":"grams",
+      "significance":70,
+      "substitutes":[]
+    },
+    {
+      "name":"Olive oil",
+      "quantity":10,
+      "units":"Milliliters",
+      "significance":70,
+      "substitutes":[{
+        "name":"Sunflover oil",
+        "quantity":10,
+        "units":"Milliliters",
+        "significance":70,
+        "substitutes":[]
+      }]
+    }
+  ],
+  "algorithm":"Here is text with explanation how to cook this type of cutlets."
+}

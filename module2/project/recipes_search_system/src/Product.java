@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Product implements Serializable {
 
-    private final Enum name; // name should be one of valid values
+    private final String name; // name should be one of valid values
     private final Units unit;
     private final byte significance; // significance of product in percents (0-100)
     private final ArrayList<Product> substitutes = new ArrayList<>(); // list of possible substitute products
     private double quantity; // how much product needs in recipe
 
-    public Product(Enum name, double quantity, Units unit, byte significance) {
+    public Product(String name, double quantity, Units unit, byte significance) {
         checkArgs(quantity, significance);
         this.name = name;
         this.quantity = quantity;
@@ -30,7 +30,7 @@ public class Product implements Serializable {
         substitutes.add(product);
     }
 
-    public Enum getName() { return name; }
+    public String getName() { return name; }
 
     public Units getUnit() { return unit; }
 
@@ -45,7 +45,17 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        String text = String.format("%s - %.3f %s\n", name, quantity, unit);
+        String text;
+        if (substitutes.isEmpty()) text = String.format("%s - %.3f %s\n", name, quantity, unit);
+        else {
+            StringBuilder sb = new StringBuilder(String.format("%s - %.3f %s\n", name, quantity, unit));
+            for (Product product:substitutes) {
+                sb.append("\tor\n\t");
+                sb.append(product.toString());
+            }
+            text = sb.toString();
+        }
+
         return text;
     }
 }

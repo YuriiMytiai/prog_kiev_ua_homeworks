@@ -1,0 +1,19 @@
+{"products":[
+{
+  "ProductCategory":"Fruits",
+  "ProductName":"Apple"
+},
+{
+  "ProductCategory":"Fruits",
+  "ProductName":"Orange"
+},
+{
+  "ProductCategory":"Fruits",
+  "ProductName":"Pineapple"
+},
+{
+  "ProductCategory":"Fruits",
+  "ProductName":"Pear"
+}
+]
+}

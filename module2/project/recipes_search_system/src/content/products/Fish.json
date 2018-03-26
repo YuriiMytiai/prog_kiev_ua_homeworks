@@ -1,0 +1,20 @@
+{
+  "products":[
+{
+  "ProductCategory":"Fish",
+  "ProductName":"Salmon"
+},
+{
+  "ProductCategory":"Fish",
+  "ProductName":"Trout"
+},
+{
+  "ProductCategory":"Fish",
+  "ProductName":"Catfish"
+},
+{
+  "ProductCategory":"Fish",
+  "ProductName":"Zander"
+}
+]
+}

@@ -20,6 +20,10 @@ public class Recipe implements Serializable {
         this.algorithm = algorithm;
     }
 
+    public Recipe() {
+        this(CategoriesOfDishes.Other, "Not initialized", 1, (byte)1, "");
+    }
+
     private void checkArgs(int time, byte complexity) {
         if (time < 1) throw new IllegalArgumentException("Invalid time value");
         if ((complexity < 0) || (complexity > 10)) throw new IllegalArgumentException("Complexity should have value between 0 and 10");
@@ -54,10 +58,10 @@ public class Recipe implements Serializable {
     method getPercentageOfEntries(ArrayList<Enum> products) search through all products in recipe and
     all products in user's product list and finds equal products
      */
-    public byte getPercentageOfEntries(ArrayList<Enum> products) {
+    public byte getPercentageOfEntries(ArrayList<String> products) {
         int numOfEquals = 0;
         for (Product productInRecipe:this.products) {
-            for(Enum curProduct:products) {
+            for(String curProduct:products) {
                 if (productInRecipe.getName().equals(curProduct)) numOfEquals++;
             }
         }
