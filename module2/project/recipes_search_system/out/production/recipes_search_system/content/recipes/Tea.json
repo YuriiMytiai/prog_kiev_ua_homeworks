@@ -1,5 +1,5 @@
 {
-  "category":"Drinks",
+  "category":"DRINKS",
   "name":"Tea",
   "time":10,
   "complexity":1,
@@ -7,21 +7,21 @@
     {
       "name":"Tea",
       "quantity":1,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":100,
       "substitutes":[]
     },
     {
       "name":"Sugar",
       "quantity":1,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":70,
       "substitutes":[]
     },
     {
       "name":"Water",
       "quantity":250,
-      "units":"Milliliters",
+      "units":"MILLILITERS",
       "significance":100,
       "substitutes":[]
     }

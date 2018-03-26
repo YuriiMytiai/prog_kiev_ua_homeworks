@@ -1,5 +1,5 @@
 {
-  "category":"Barbeque",
+  "category":"BARBEQUE",
   "name":"Pork cutlet",
   "time":40,
   "complexity":6,
@@ -7,47 +7,47 @@
     {
       "name":"Pork",
       "quantity":0.5,
-      "units":"Kilograms",
+      "units":"KILOGRAMS",
       "significance":100,
       "substitutes":[]
     },
     {
       "name":"Onion",
       "quantity":100,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":80,
       "substitutes":[]
     },
     {
       "name":"Egg",
       "quantity":1,
-      "units":"Pieces",
+      "units":"PIECES",
       "significance":70,
       "substitutes":[]
     },
     {
       "name":"Salt",
       "quantity":0.5,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":80,
       "substitutes":[]
     },
     {
       "name":"Black pepper",
       "quantity":0.5,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":70,
       "substitutes":[]
     },
     {
       "name":"Olive oil",
       "quantity":10,
-      "units":"Milliliters",
+      "units":"MILLILITERS",
       "significance":70,
       "substitutes":[{
         "name":"Sunflover oil",
         "quantity":10,
-        "units":"Milliliters",
+        "units":"MILLILITERS",
         "significance":70,
         "substitutes":[]
       }]

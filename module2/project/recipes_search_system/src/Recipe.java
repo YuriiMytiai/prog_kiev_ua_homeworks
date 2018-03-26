@@ -1,17 +1,18 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class Recipe implements Serializable {
     // this class describes one recipe
     private final String name; // name of dish
-    private final CategoriesOfDishes category; // category of dish
-    private final ArrayList<Product> products = new ArrayList<>(); // list of required products
+    private final DishCategory category; // category of dish
+    private final List<Product> products = new ArrayList<>(); // list of required products
     private final int time; // time required for cooking
     private final byte complexity; // complexity of recipe
     private final String algorithm;
 
-    public Recipe(CategoriesOfDishes category, String name, int time, byte complexity, String algorithm) {
+    public Recipe(DishCategory category, String name, int time, byte complexity, String algorithm) {
         checkArgs(time, complexity);
         this.category = category;
         this.name = name;
@@ -21,7 +22,7 @@ public class Recipe implements Serializable {
     }
 
     public Recipe() {
-        this(CategoriesOfDishes.Other, "Not initialized", 1, (byte)1, "");
+        this(DishCategory.OTHER, "Not initialized", 1, (byte)1, "");
     }
 
     private void checkArgs(int time, byte complexity) {
@@ -33,11 +34,11 @@ public class Recipe implements Serializable {
 
     public String getName() { return name; }
 
-    public CategoriesOfDishes getCategory() { return category; }
+    public DishCategory getCategory() { return category; }
 
-    public ArrayList<Product> getProducts() { return products; }
+    public List<Product> getProducts() { return products; }
 
-    public ArrayList<Product> getProducts(int persons) {
+    public List<Product> getProducts(int persons) {
         if (persons < 1) throw new IllegalArgumentException("Number of persons should be grater then 0");
 
         ArrayList<Product> products = new ArrayList<>();
@@ -58,7 +59,7 @@ public class Recipe implements Serializable {
     method getPercentageOfEntries(ArrayList<Enum> products) search through all products in recipe and
     all products in user's product list and finds equal products
      */
-    public byte getPercentageOfEntries(ArrayList<String> products) {
+    public byte getPercentageOfEntries(List<String> products) {
         int numOfEquals = 0;
         for (Product productInRecipe:this.products) {
             for(String curProduct:products) {

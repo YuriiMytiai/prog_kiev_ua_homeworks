@@ -1,5 +1,5 @@
 {
-  "category":"Barbeque",
+  "category":"BARBEQUE",
   "name":"Simple beef steak",
   "time":30,
   "complexity":4,
@@ -7,33 +7,33 @@
     {
       "name":"Beef",
       "quantity":350,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":100,
       "substitutes":[]
     },
     {
       "name":"Salt",
       "quantity":0.5,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":80,
       "substitutes":[]
     },
     {
       "name":"Black pepper",
       "quantity":0.5,
-      "units":"Grams",
+      "units":"GRAMS",
       "significance":70,
       "substitutes":[]
     },
     {
       "name":"Olive oil",
       "quantity":10,
-      "units":"Milliliters",
+      "units":"MILLILITERS",
       "significance":70,
       "substitutes":[{
         "name":"Sunflover oil",
         "quantity":10,
-        "units":"Milliliters",
+        "units":"MILLILITERS",
         "significance":70,
         "substitutes":[]
       }]

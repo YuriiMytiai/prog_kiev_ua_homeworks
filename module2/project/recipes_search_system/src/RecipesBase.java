@@ -1,13 +1,14 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class RecipesBase implements Serializable {
     // this class contains list of recipes that corresponds to some category of dishes
-    private final CategoriesOfDishes category;
-    private final ArrayList<Recipe> recipes = new ArrayList<>();
+    private final DishCategory category;
+    private final List<Recipe> recipes = new ArrayList<>();
 
-    public RecipesBase(CategoriesOfDishes category) {
+    public RecipesBase(DishCategory category) {
         this.category = category;
     }
 
@@ -16,12 +17,12 @@ public class RecipesBase implements Serializable {
         return this;
     }
 
-    public ArrayList<Recipe> getRecipes() { return recipes; }
+    public List<Recipe> getRecipes() { return recipes; }
 
     /*
     method findByProducts(ArrayList<Product> products) will return new RecipesBase object with matches in products
      */
-    public RecipesBase findByProducts(ArrayList<String> products) {
+    public RecipesBase findByProducts(List<String> products) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
             if (curRecipe.getPercentageOfEntries(products) == 100) base.addRecipe(curRecipe);
@@ -33,7 +34,7 @@ public class RecipesBase implements Serializable {
     method findByProducts(ArrayList<Product> products, byte entryPercents) will return new RecipesBase object
      with matches in products with some tolerance
      */
-    public RecipesBase findByProducts(ArrayList<String> products, byte entryPercents) {
+    public RecipesBase findByProducts(List<String> products, byte entryPercents) {
         RecipesBase base = new RecipesBase(category);
         for (Recipe curRecipe:recipes) {
             if (curRecipe.getPercentageOfEntries(products) > entryPercents) base.addRecipe(curRecipe);

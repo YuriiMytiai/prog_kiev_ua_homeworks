@@ -1,29 +1,29 @@
 public enum Units {
-    Pieces {
+    PIECES {
         @Override
         public String toString() {
             return "p";
         }
     },
-    Kilograms {
+    KILOGRAMS {
         @Override
         public String toString() {
             return "kg";
         }
     },
-    Grams {
+    GRAMS {
         @Override
         public String toString() {
             return "g";
         }
     },
-    Liters {
+    LITERS {
         @Override
         public String toString() {
             return "l";
         }
     },
-    Milliliters {
+    MILLILITERS {
         @Override
         public String toString() {
             return "ml";

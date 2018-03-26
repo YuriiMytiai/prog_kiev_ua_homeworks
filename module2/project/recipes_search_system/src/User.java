@@ -1,16 +1,17 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class User {
     private final String name;
-    private CategoriesOfDishes category;
-    private final ArrayList<String> validProducts;
-    private final HashMap<CategoriesOfDishes, RecipesBase> allRecipesBase;
+    private DishCategory category;
+    private final List<String> validProducts;
+    private final AllRecipesCollection allRecipesBase;
     private RecipesBase recipesBase;
-    private final ArrayList<String> products = new ArrayList<>();
+    private final List<String> products = new ArrayList<>();
 
-    public User(String name, CategoriesOfDishes category, HashMap<CategoriesOfDishes, RecipesBase> recipes, ArrayList<String> validProducts) {
+    public User(String name, DishCategory category, AllRecipesCollection recipes, List<String> validProducts) {
         this.name = name;
         this.category = category;
         allRecipesBase = recipes;
@@ -19,7 +20,7 @@ public class User {
     }
 
 
-    public void changeCategory(CategoriesOfDishes category) {
+    public void changeCategory(DishCategory category) {
         this.category = category;
         changeRecipeBase(category);
     }
@@ -28,7 +29,7 @@ public class User {
         return recipesBase;
     }
 
-    public ArrayList<String> getProducts() {
+    public List<String> getProducts() {
         return products;
     }
 
@@ -47,12 +48,8 @@ public class User {
         products.clear();
     }
 
-    private void changeRecipeBase(CategoriesOfDishes category) {
-        try {
-            recipesBase = allRecipesBase.get(category);
-        } catch (IllegalArgumentException e) {
-            e.initCause(new Throwable("Base category " + category + " does not exist"));
-        }
+    private void changeRecipeBase(DishCategory category) {
+        recipesBase = allRecipesBase.changeDishesCategory(category);
     }
 }
 

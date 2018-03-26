@@ -1,6 +1,6 @@
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Runner {
     //this class shows how to use Recipe Search System
@@ -12,11 +12,11 @@ public class Runner {
                 new File("src.//content//recipes"));
 
         //here we're creating base with products:
-        ArrayList<String> productsBase = initialization.createProductsBase();
+        List<String> productsBase = initialization.createProductsBase();
 
         //here we're creating bases with recipes that correspond to fixed
         //categories of dishes:
-        HashMap<CategoriesOfDishes, RecipesBase> recipesBase = initialization.createRecipesBase();
+        AllRecipesCollection recipesBase = initialization.createRecipesBase();
 
 
         /*
@@ -25,7 +25,7 @@ public class Runner {
         enumeration. Cause now we don't have big base at this moment let's assume that user have selected Barbeque category.
         */
         // lets assume that user selected Barbeque category:
-        CategoriesOfDishes userChoice = CategoriesOfDishes.Barbeque;
+        DishCategory userChoice = DishCategory.BARBEQUE;
 
         //lets create user:
         User user1 = new User("User 1", userChoice, recipesBase, productsBase);
@@ -52,12 +52,12 @@ public class Runner {
         System.out.println("Second test");
         // let's create another one products list
         user1.clearProductsList();
-        user1.addProduct("Egg").addProduct("Beef").addProduct("Salt").addProduct("Carrot")
+        user1.addProduct("Egg").addProduct("Beef").addProduct("Salt")
                 .addProduct("Black pepper").addProduct("Olive oil").addProduct("Onion").addProduct("Pork");
 
 
         //let's find recipes which products lists match with addAnotherProducts by 70 or more percents:
-        whatUserCanCook = user1.getRecipesBase().findByProducts(user1.getProducts()); // will return all 3 recipes
+        whatUserCanCook = user1.getRecipesBase().findByProducts(user1.getProducts(), (byte) 70); // will return all 3 recipes
 
         // let's look at list of available recipes:
         System.out.println(whatUserCanCook);
