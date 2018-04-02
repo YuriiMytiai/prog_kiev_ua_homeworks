@@ -62,6 +62,11 @@ public class Runner {
         // let's look at list of available recipes:
         System.out.println(whatUserCanCook);
 
+        //let's sort them by complexity:
+        whatUserCanCook.sortByComplexity(); //will put 3-rd recipe to first line
+        System.out.println();
+        System.out.println(whatUserCanCook);
+
         System.out.println("--------------------------------");
         System.out.println("Third test");
         //let's sort recipes by time needed for cooking:

@@ -1,10 +1,11 @@
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Recipe implements Serializable {
-    // this class describes one recipe
+    /**
+     * this class describes one recipe
+      */
     private final String name; // name of dish
     private final DishCategory category; // category of dish
     private final List<Product> products = new ArrayList<>(); // list of required products
@@ -69,29 +70,6 @@ public class Recipe implements Serializable {
 
         return (byte)(numOfEquals * 100 / this.products.size());
     }
-
-    public static final Comparator<Recipe> CompareByTime = new Comparator<Recipe>() {
-        @Override
-        public int compare(Recipe r1, Recipe r2) {
-            return r1.getTime() - r2.getTime();
-        }
-    };
-
-    public static final Comparator<Recipe> CompareByComplexity = new Comparator<Recipe>() {
-        @Override
-        public int compare(Recipe r1, Recipe r2) {
-            return r1.getComplexity() - r2.getComplexity();
-        }
-    };
-
-
-    // here if number of products is smaller, than object will be higher in list.
-    public static final Comparator<Recipe> CompareByNumOfProducts = new Comparator<Recipe>() {
-        @Override
-        public int compare(Recipe r1, Recipe r2) {
-            return r2.getProducts().size() - r1.getProducts().size();
-        }
-    };
 
     public String showRecipe() {
         StringBuilder text = new StringBuilder();
