@@ -88,7 +88,7 @@ public class AllRecipesCollection {
 
         String name = jsonObject.getString("name");
         int time = jsonObject.getInt("time");
-        byte complexity = (byte)jsonObject.getInt("complexity");
+        int complexity = jsonObject.getInt("complexity");
         String algorithm = jsonObject.getString("algorithm");
 
         return new Recipe(DishCategory.valueOf(category), name, time, complexity, algorithm);
@@ -99,7 +99,7 @@ public class AllRecipesCollection {
         double quantity = curObj.getDouble("quantity");
 
         Units units = Units.valueOf(curObj.getString("units"));
-        byte significance = (byte) curObj.getInt("significance");
+        int significance = curObj.getInt("significance");
 
         Product newProduct = new Product(productName, quantity, units, significance);
 

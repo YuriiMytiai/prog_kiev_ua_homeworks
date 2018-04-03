@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 
 public class Runner {
@@ -57,7 +56,7 @@ public class Runner {
 
 
         //let's find recipes which products lists match with addAnotherProducts by 70 or more percents:
-        whatUserCanCook = user1.getRecipesBase().findByProducts(user1.getProducts(), (byte) 70); // will return all 3 recipes
+        whatUserCanCook = user1.getRecipesBase().findByProducts(user1.getProducts(), 70); // will return all 3 recipes
 
         // let's look at list of available recipes:
         System.out.println(whatUserCanCook);
@@ -78,7 +77,7 @@ public class Runner {
         System.out.println(shortTimeRecipes); //will return 2 recipes
 
         //let's find (filter) recipes that have complexity less than or equal to 6:
-        RecipesBase smallComplexityRecipes = whatUserCanCook.findByComplexity((byte)5);
+        RecipesBase smallComplexityRecipes = whatUserCanCook.findByComplexity(5);
         System.out.println(smallComplexityRecipes); //will return 1 recipe
 
     }

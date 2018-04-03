@@ -7,7 +7,7 @@ public class RecipesPredicates {
         return recipe -> recipe.getPercentageOfEntries(products) == 100;
     }
 
-    public static final Predicate<Recipe> filterByProducts(List<String> products, byte entryPercents){
+    public static final Predicate<Recipe> filterByProducts(List<String> products, int entryPercents){
         return recipe -> recipe.getPercentageOfEntries(products) >= entryPercents;
     }
 
@@ -15,7 +15,7 @@ public class RecipesPredicates {
         return recipe -> recipe.getTime() <= time;
     }
 
-    public static final Predicate<Recipe> filterByComplexity(byte complexity){
+    public static final Predicate<Recipe> filterByComplexity(int complexity){
         return recipe -> recipe.getComplexity() <= complexity;
     }
 }

@@ -10,10 +10,10 @@ public class Recipe implements Serializable {
     private final DishCategory category; // category of dish
     private final List<Product> products = new ArrayList<>(); // list of required products
     private final int time; // time required for cooking
-    private final byte complexity; // complexity of recipe
+    private final int complexity; // complexity of recipe
     private final String algorithm;
 
-    public Recipe(DishCategory category, String name, int time, byte complexity, String algorithm) {
+    public Recipe(DishCategory category, String name, int time, int complexity, String algorithm) {
         checkArgs(time, complexity);
         this.category = category;
         this.name = name;
@@ -23,10 +23,10 @@ public class Recipe implements Serializable {
     }
 
     public Recipe() {
-        this(DishCategory.OTHER, "Not initialized", 1, (byte)1, "");
+        this(DishCategory.OTHER, "Not initialized", 1, 1, "");
     }
 
-    private void checkArgs(int time, byte complexity) {
+    private void checkArgs(int time, int complexity) {
         if (time < 1) throw new IllegalArgumentException("Invalid time value");
         if ((complexity < 0) || (complexity > 10)) throw new IllegalArgumentException("Complexity should have value between 0 and 10");
     }
@@ -52,7 +52,7 @@ public class Recipe implements Serializable {
 
     public int getTime() { return time; }
 
-    public byte getComplexity() { return complexity; }
+    public int getComplexity() { return complexity; }
 
     public String getAlgorithm() { return algorithm; }
 
@@ -60,7 +60,7 @@ public class Recipe implements Serializable {
     method getPercentageOfEntries(ArrayList<Enum> products) search through all products in recipe and
     all products in user's product list and finds equal products
      */
-    public byte getPercentageOfEntries(List<String> products) {
+    public int getPercentageOfEntries(List<String> products) {
         int numOfEquals = 0;
         for (Product productInRecipe:this.products) {
             for(String curProduct:products) {
@@ -68,7 +68,7 @@ public class Recipe implements Serializable {
             }
         }
 
-        return (byte)(numOfEquals * 100 / this.products.size());
+        return numOfEquals * 100 / this.products.size();
     }
 
     public String showRecipe() {

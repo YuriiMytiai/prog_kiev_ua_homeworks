@@ -38,10 +38,10 @@ public class RecipesBase implements Serializable {
     }
 
     /**
-     * method findByProducts(ArrayList<Product> products, byte entryPercents) will return new RecipesBase object
+     * method findByProducts(ArrayList<Product> products, int entryPercents) will return new RecipesBase object
      * with matches in products with some tolerance
      */
-    public RecipesBase findByProducts(List<String> products, byte entryPercents) {
+    public RecipesBase findByProducts(List<String> products, int entryPercents) {
         List<Recipe> filteredRecipes =
                 recipes.stream().filter(RecipesPredicates.filterByProducts(products, entryPercents)).collect(Collectors.toList());
         return new RecipesBase(category, filteredRecipes);
@@ -57,9 +57,9 @@ public class RecipesBase implements Serializable {
     }
 
     /**
-     * method findByComplexity(byte complexity) will return RecipesBase with complexity <= than given
+     * method findByComplexity(int complexity) will return RecipesBase with complexity <= than given
     */
-    public RecipesBase findByComplexity(byte complexity) {
+    public RecipesBase findByComplexity(int complexity) {
         List<Recipe> filteredRecipes =
                 recipes.stream().filter(RecipesPredicates.filterByComplexity(complexity)).collect(Collectors.toList());
         return new RecipesBase(category, filteredRecipes);
@@ -69,14 +69,14 @@ public class RecipesBase implements Serializable {
      * method sortByTime() will sort recipes field by time needed to cook dishes
      */
     public void sortByTime() {
-        Collections.sort(recipes, RecipeComparators.CompareByTime);
+        Collections.sort(recipes, RecipeComparators.compareByTime());
     }
 
     /**
      * method sortByComplexity() will sort recipes field by complexity of cooking
      */
     public void sortByComplexity() {
-        Collections.sort(recipes, RecipeComparators.CompareByComplexity);
+        Collections.sort(recipes, RecipeComparators.compareByComplexity());
     }
 
     /**
@@ -84,7 +84,7 @@ public class RecipesBase implements Serializable {
      * (first will be recipe with largest number of entries of products, given by user)
      */
     public void sortByNumOfProducts() {
-        Collections.sort(recipes, RecipeComparators.CompareByNumOfProducts);
+        Collections.sort(recipes, RecipeComparators.compareByNumOfProducts());
     }
 
     @Override

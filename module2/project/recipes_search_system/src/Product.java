@@ -6,11 +6,11 @@ public class Product implements Serializable {
 
     private final String name; // name should be one of valid values
     private final Units unit;
-    private final byte significance; // significance of product in percents (0-100)
+    private final int significance; // significance of product in percents (0-100)
     private final ArrayList<Product> substitutes = new ArrayList<>(); // list of possible substitute products
     private double quantity; // how much product needs in recipe
 
-    public Product(String name, double quantity, Units unit, byte significance) {
+    public Product(String name, double quantity, Units unit, int significance) {
         checkArgs(quantity, significance);
         this.name = name;
         this.quantity = quantity;
@@ -19,7 +19,7 @@ public class Product implements Serializable {
     }
 
 
-    private void checkArgs(double quantity, byte significance) {
+    private void checkArgs(double quantity, int significance) {
         if ((quantity < 0)) // if quantity = 0 we don't need this product in recipe, if qty < 0 it doesn't have sens
             throw new IllegalArgumentException("Quantity has illegal value");
         else if ((significance < 1) || (significance > 100)) // if significance = 0 we don't need this product in recipe, if significance < 0 it doesn't have sens
@@ -34,7 +34,7 @@ public class Product implements Serializable {
 
     public Units getUnit() { return unit; }
 
-    public byte getSignificance() { return significance; }
+    public int getSignificance() { return significance; }
 
     public ArrayList<Product> getSubstitutes() { return substitutes; }
 
