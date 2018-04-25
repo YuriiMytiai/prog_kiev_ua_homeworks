@@ -10,15 +10,19 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class AllRecipesCollection {
-    Map<DishCategory, RecipesBase> recipesBase = new HashMap<>();
+
+   private  Map<DishCategory, RecipesBase> recipesBase = new HashMap<>();
 
 
     public AllRecipesCollection addRecipe(File file) {
         if (!file.exists()) throw new IllegalArgumentException("File does not exist!");
         String fileName = file.getName();
-        if(fileName.endsWith(".json")){
+        if(fileName.endsWith(".json")) {
             Recipe recipe = parseRecipeJson(file);
             addRecipeToBase(recipe);
+        } else if (fileName.endsWith(".ser")) {
+            Optional<Recipe> recipe = loadRecipeFromBinary(file);
+            recipe.ifPresent(this::addRecipeToBase);
         }
         return this;
     }
@@ -113,18 +117,10 @@ public class AllRecipesCollection {
 
     public void initialize(File recipesDirectory) {
         for (File curItem:recipesDirectory.listFiles()) {
-            String fileName = curItem.getName();
-            if(fileName.endsWith(".json")) {
-                Recipe recipe = parseRecipeJson(curItem);
-                addRecipeToBase(recipe);
-            } else if (fileName.endsWith(".ser")) {
-                Optional<Recipe> recipe = loadRecipeFromBinary(curItem);
-                recipe.ifPresent(this::addRecipeToBase);
-            }
+            addRecipe(curItem);
         }
     }
 
-    @Nullable
     private Optional<Recipe> loadRecipeFromBinary(File curItem) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(curItem))) {
             Recipe recipe = (Recipe) ois.readObject();
@@ -135,6 +131,7 @@ public class AllRecipesCollection {
         return Optional.empty();
     }
 
+    @Nullable
     public RecipesBase changeDishesCategory(DishCategory category) {
         try {
             RecipesBase recipesBase = this.recipesBase.get(category);
