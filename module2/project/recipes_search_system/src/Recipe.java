@@ -1,4 +1,4 @@
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +83,22 @@ public class Recipe implements Serializable {
         text.append(String.format("Required time: %d min\nComplexity of recipe: %d of 10\n\n", time, complexity));
 
         return text.toString();
+    }
+
+    public void saveToTxtFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write(showRecipe());
+        } catch (IOException e) {
+            System.out.println("Recipe can not be saved to text file " + fileName);
+        }
+    }
+
+    public void saveToBinaryFile(String fileName) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            oos.writeObject(this);
+        } catch (IOException e) {
+            System.out.println("Recipe can not be saved to binary file " + fileName);
+        }
     }
 
     @Override

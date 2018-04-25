@@ -1,11 +1,12 @@
+import com.sun.istack.internal.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class AllRecipesCollection {
@@ -69,16 +70,13 @@ public class AllRecipesCollection {
 
     static String readFile(File file) throws FileNotFoundException {
         StringBuilder fileContents = new StringBuilder((int)file.length());
-        Scanner scanner = new Scanner(file);
         String lineSeparator = System.getProperty("line.separator");
 
-        try {
-            while(scanner.hasNextLine()) {
-                fileContents.append(scanner.nextLine() + lineSeparator);
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                fileContents.append(scanner.nextLine()).append(lineSeparator);
             }
             return fileContents.toString();
-        } finally {
-            scanner.close();
         }
     }
 
@@ -116,12 +114,25 @@ public class AllRecipesCollection {
     public void initialize(File recipesDirectory) {
         for (File curItem:recipesDirectory.listFiles()) {
             String fileName = curItem.getName();
-            if(fileName.endsWith(".json")){
+            if(fileName.endsWith(".json")) {
                 Recipe recipe = parseRecipeJson(curItem);
                 addRecipeToBase(recipe);
+            } else if (fileName.endsWith(".ser")) {
+                Optional<Recipe> recipe = loadRecipeFromBinary(curItem);
+                recipe.ifPresent(this::addRecipeToBase);
             }
         }
-        return;
+    }
+
+    @Nullable
+    private Optional<Recipe> loadRecipeFromBinary(File curItem) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(curItem))) {
+            Recipe recipe = (Recipe) ois.readObject();
+            return Optional.of(recipe);
+        } catch (ClassNotFoundException | IOException e) {
+            System.out.println("Can not load recipe from file " + curItem);
+        }
+        return Optional.empty();
     }
 
     public RecipesBase changeDishesCategory(DishCategory category) {
